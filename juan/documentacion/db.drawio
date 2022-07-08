@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="6VAuOU3LNLrEPw-pVDRH" name="modelo entidad relacion">
-        <mxGraphModel dx="1955" dy="2145" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2379" dy="2145" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -301,7 +301,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="W5UyvvHs6XKc94zZX0S2" name="data">
-        <mxGraphModel dx="564" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="776" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="RJJerQ0d01_idblkB17e-0"/>
                 <mxCell id="RJJerQ0d01_idblkB17e-1" parent="RJJerQ0d01_idblkB17e-0"/>

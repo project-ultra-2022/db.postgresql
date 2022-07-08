@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="-5hhiTOJYaTxIGmJzifk" name="modelo entidad-relación">
-        <mxGraphModel dx="1603" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1981" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -452,11 +452,14 @@
                         <mxRectangle width="156" height="40" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="iyQ1jEB3x-4A9XdkGr1k-202" value="&lt;h1&gt;Retroalimentación&lt;/h1&gt;&lt;div&gt;1. Hiciste un excelente trabajo, sigue así!&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="-640" y="480" width="310" height="250" as="geometry"/>
+                </mxCell>
             </root>
         </mxGraphModel>
     </diagram>
     <diagram id="GK0KDmGRZCSPLEDGhb8H" name="data">
-        <mxGraphModel dx="776" dy="488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1154" dy="782" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="3rnbf16T3xSzr0oEW06G-0"/>
                 <mxCell id="3rnbf16T3xSzr0oEW06G-1" parent="3rnbf16T3xSzr0oEW06G-0"/>

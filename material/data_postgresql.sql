@@ -51,8 +51,8 @@ CREATE TABLE classes (
 
 CREATE TABLE school_years (
     id SERIAL PRIMARY KEY,
-    start_year YEAR NOT NULL,
-    end_year YEAR NOT NULL
+    start_year DATE NOT NULL,
+    end_year DATE NOT NULL
 );
 
 CREATE TABLE students_classes (
@@ -64,3 +64,17 @@ CREATE TABLE students_classes (
     FOREIGN KEY (id_class) REFERENCES classes(id),
     FOREIGN KEY (id_school_year) REFERENCES school_years(id)
 );
+
+select * from school_years;
+
+select * from students_classes
+
+select * from classes
+
+select * from degrees
+
+select * from teachers
+
+select * from students
+
+select * from departaments

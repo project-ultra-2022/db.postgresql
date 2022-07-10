@@ -1,0 +1,13 @@
+
+CREATE TABLE public.users
+(
+    id integer NOT NULL,
+    name text NOT NULL,
+    lastname text NOT NULL,
+    date_create date NOT NULL,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;
+    

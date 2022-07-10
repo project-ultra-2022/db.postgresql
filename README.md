@@ -7,7 +7,8 @@
 
 # Clase 2:
 ## Tema: Creación de db, tablas, insertar datos, eliminar datos, actualizar datos y hacer consulta básica
-1. Esteban: Estar atento a clase 1+
-2. Selena: Estar atento a clase 1+
-3. Santiago: Puntual 1+
-4. Pipe: Puntual 1+
+1. Esteban: Estar atento a clase 1+ Tablero
+2. Esteban: Estar atento a clase 1+
+3. Selena: Estar atento a clase 1+
+4. Santiago: Puntual 1+
+5. Pipe: Puntual 1+

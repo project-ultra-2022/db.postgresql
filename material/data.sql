@@ -36,7 +36,7 @@ CREATE TABLE teachers (
     FOREIGN KEY (id_departament) REFERENCES departaments(id)
 );
 
- CREATE TABLE degrees (
+CREATE TABLE degrees (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL
 );

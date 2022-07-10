@@ -11,7 +11,7 @@ DELETE FROM public.roles
 
 # buscar registro
 
-SELECT * from roles
+SELECT * from 
 
 # actualizar registro
 

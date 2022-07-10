@@ -9,7 +9,7 @@ DELETE FROM public.roles
 
  # Buscar un registro 
  Select *
-from roles
+from ej;roles
 
 # Actualizar un registro 
 UPDATE roles
@@ -31,3 +31,6 @@ CREATE TABLE public.users
         ON DELETE NO ACTION
         NOT VALID
 ); 
+
+# Atajo 
+iNT +  AUTO_INCREMENT= SERIAL 

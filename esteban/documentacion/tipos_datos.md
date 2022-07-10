@@ -5,3 +5,5 @@ Decimal, float, int => numero
 boolean = true or false
 arrays = conjunto [22, "dani", true]
 objeto {nombre: Dani, edad: 22}
+
+modificando porque quiero hacer push 

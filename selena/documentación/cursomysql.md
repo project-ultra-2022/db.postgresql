@@ -26,3 +26,10 @@ insert into alumnos (nombre,telefono,edad)
 values ('Daniel','3507192591','22')
 # insertar datos por el orden de los datos que tengamos sin necesidad de especificarlos
 insert into alumnos values ('juan','maldonado','santander','3112997659','16');
+
+# mostrar la tabla 
+mostrar toda la tabla de alumnos 
+select * from alumnos 
+
+mostrar algunos campos
+select nombre, direccion from alumnos

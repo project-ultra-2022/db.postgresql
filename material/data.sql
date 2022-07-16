@@ -211,10 +211,10 @@ INSERT INTO classes VALUES (82, 'Procesos biotecnológicos', 6, 'obligatoria', 3
 INSERT INTO classes VALUES (83, 'Técnicas instrumentales avanzadas', 4.5, 'obligatoria', 3, 2, NULL, 7);
 
 /* course escolar */
-INSERT INTO school_years VALUES (1, 2014, 2015);
-INSERT INTO school_years VALUES (2, 2015, 2016);
-INSERT INTO school_years VALUES (3, 2016, 2017);
-INSERT INTO school_years VALUES (4, 2017, 2018);
+INSERT INTO school_years VALUES (1, '2014-01-01', '2015-01-01');
+INSERT INTO school_years VALUES (2, '2015-01-01', '2016-01-01');
+INSERT INTO school_years VALUES (3, '2016-01-01', '2017-01-01');
+INSERT INTO school_years VALUES (4, '2017-01-01', '2018-01-01');
 
 /* students se matricula en classes */
 INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (1, 1, 1);

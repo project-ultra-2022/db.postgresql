@@ -12,4 +12,8 @@ Para agregar un nuevo campo tenemos que darle en el mas y nos va a crear un camp
 
 # insertar datos a una tabla 
 
-insert into
+insert into persona values ('1','Nelson','1030540666') 
+
+insert into persona (idpersona,nombre)values ('1','Nelson')
+
+Depende de que columnas hallamos agregado a la tabla podemos agregar los insert los valores

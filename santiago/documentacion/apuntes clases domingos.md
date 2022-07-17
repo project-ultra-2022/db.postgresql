@@ -56,3 +56,4 @@ conjunto [22, "dani", true]
 # objeto
 
 { nombre: Dani; edad: 22}
+

@@ -8,8 +8,7 @@ DELETE FROM public.roles
 	WHERE id=1;
 
  # Buscar un registro 
- Select *
-from ej;roles
+ Select * from  ej;roles
 
 # Actualizar un registro 
 UPDATE roles
@@ -34,3 +33,16 @@ CREATE TABLE public.users
 
 # Atajo 
 iNT +  AUTO_INCREMENT= SERIAL 
+
+# tabla pgAdmin 
+CREATE TABLE public.users
+(
+    id integer NOT NULL,
+    name text NOT NULL,
+    lastname text NOT NULL,
+    date_create date NOT NULL,
+    PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;

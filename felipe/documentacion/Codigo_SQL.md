@@ -188,3 +188,15 @@ select
  from notes as n
  inner join students as s on n.id_student = s.id 
  group by s.name 
+
+ # ejercicios 
+ buscar los profesores que son muejeres y vamos a contar cuantas classes tienen asociadas 
+ select
+    count (c.id),
+    t.name
+   
+from teachers as t  
+inner join classes as c on c.id_teacher = t.id 
+where t.sexo = 'M'
+group by t.name
+

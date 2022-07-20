@@ -1,40 +1,93 @@
-# como crear una base de datos 
-para eso oprimimos click derecho sobre "database" luego presionamos "create" o usando el siguiente codigo: create database (nombre). Luego presionamos click derecho sobre database y le damos refresh  
+## /CLASE N1/%
+# Texto
 
-# como elminiar una base de datos 
-para elminiar una base de datos simplemente presionamos click derecho sobre la base de datos que queramos eliminar y le damos drop o usamos el siguiente codigo (antes de usar  el codigo recuerda desconectar la base de datos dandole click derecho y luego disconnect) 
-Drop database if exists "nombre de la base de datos" /* no se te olvide poner las comillas*/
+string, text, varchar
 
-# crear una tabla 
-para crear una tabla ponemos el siguiente codigo:
-create table persona(
-  idpersona int not null, /* Not null quiere decir que el campo nunca debe estar vacio*/
-  nombre varchar (20),
-  cedula varchar (10) 
+# Numero
+
+Decimal, float, int
+
+# boolean
+
+si o no
+
+# arrays
+
+conjunto [22, "dani", true]
+
+# objeto
+
+{ nombre: Dani; edad: 22}   
+
+
+commit de prueba
+
+
+# /CLASE N2/%
+
+# intesrtar registro
+
+INSERT INTO public.roles(name)
+	VALUES ('felipe');
+
+ # eliminar registro 
+DELETE FROM public.roles
+	WHERE id=1;
+
+ # Buscar un registro 
+ Select * from  ej;roles
+
+# Actualizar un registro 
+UPDATE roles set name= 'admin'
+where id =2 /*esto solamente es un ejemplo del una tabla para actualizar el registro usa el nombre y las propiedades de tu tabla*/
+
+# crear una tabla con relacion
+CREATE TABLE public.users
+(
+    id serial NOT NULL,
+    name text NOT NULL,
+    lastname text NOT NULL,
+    date_created date NOT NULL,
+    role_id integer,
+    PRIMARY KEY (id),
+    CONSTRAINT role_id FOREIGN KEY (role_id)
+        REFERENCES public.roles (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
 ); 
 
-tambien se puede crear una tabla de otra forma: nos vamos a tables=create=table y alli ponemos el nombre de la tabla y las especificaciones que queremos que tenga sin embargo los datos tipo caracteres se escriben de distinta forma. Int = Integer, y varhcar = character varying 
+# Atajo 
+iNT +  AUTO_INCREMENT= SERIAL 
 
-# eliminar tabla 
-Podemos elimianr una tabla de la misma manera que eliminamos una base de datos poder darle clik derecho sobre la tabla que queremos eliminar y le damos "drop"  o podemos poner el siguiente codigo 
+# tabla pgAdmin 
+CREATE TABLE public.users
+(
+    id integer NOT NULL,
+    name text NOT NULL,
+    lastname text NOT NULL,
+    date_create date NOT NULL,
+    PRIMARY KEY (id)
+);
 
-Drop table "Tabla" /*NO SE TE OLVIDE PONER LAS COMILLAS"
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;
 
-# Inserta y buscar datos en una tabla 
-para agregar datos a una tabla ponemos el siguiente codigo 
-insert into persona values ('1','Jose','1028480824')= y los datos que queremos agregar 
-       "el nombre de la tabla" 
 
+# /CLASE N3/%
 # busqueda
 si queremos buscar por ejemplo las transacciones de una persona ponemos lo siguiente  
+
 select (name, age, id) 
 from transactions 
 Where name ilike "% ANTI %"  % el porcentaje sirve para poner cualquier cosa adelante o atras osea puede poner SantiAGO o FantiSA por ejemplo. 
+
 ilike sirve para poner mayusculas y minusculas 
 Para ello disponemos del operador Like, que permite distinguir entre mayúsculas y minúsculas, por lo que es case sensitive. Es decir, debemos indicar en el patrón de nuestras consultas, los caracteres en mayúscula o minúscula. En cambio con el operador iLike es indiferente, ya que no es case sensitive
-where sirve para buscar
 
-y este seria el codigo:
+where sirve para buscar:
+
+y este seria el codigo -
 
  select  name, birthday     
 from transactions 
@@ -67,8 +120,6 @@ inner join students as s on sc.id_student = s.id
 inner join classes as c on sc.id_class = c.id 
 inner join school_years as sy on sc.id_school_year = sy.id
 
-mira el error 
-
 # que es ||?
 sirve para fucionar 
 
@@ -95,6 +146,7 @@ t.id,
 d.* /* el d.* sirve para tarer todo lo que tenga  
 from teachers as t
 inner join departaments as d on t.id_departament = d.id
+
 
 de la tabla classes vamos a traer los campos nombre ,tipo y curso 
 teachers nombre completo
@@ -166,7 +218,7 @@ select
     end genero
 from teachers
 
-# grop_by 
+# group_by 
 select
     t.name,
     count (c.id)
@@ -199,4 +251,3 @@ from teachers as t
 inner join classes as c on c.id_teacher = t.id 
 where t.sexo = 'M'
 group by t.name
-

@@ -22,7 +22,7 @@ numeric [ (p, s) ], decimal [ (p, s) ]: número exacto de precisión indicada. E
 # Tipos de datos "caracteres" 
 SERIAL es integer que es entero y auto increment que es auto incrementable juntos 
 
-VARCHAR sucesión de caracteres de longitud variable limitada
+VARCHAR (N) = sucesión de caracteres de longitud variable limitada
 
 CHAR sucesión de caracteres de longitud fija
 
@@ -37,6 +37,3 @@ bigserial, serial8: entero sobre 8 bytes con incremento automático. Es un enter
 
 # para que es el not null?
 el not null significa que el campo nunca puede estar vacio 
-
-# preguntas para felipe?
-Como usar varchar y int (explicale lo de la tabla)

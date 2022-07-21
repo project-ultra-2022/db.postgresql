@@ -37,3 +37,7 @@
 
 ## Clase 3:
 ### Tema: SQL consultas, sub consultas, uniones, condicionales y programación en JavaScript: condicionales y bucles
+1. Nelson 2+
+2. Esteban 3+
+3. Pipe 1+
+4. Selena 1+

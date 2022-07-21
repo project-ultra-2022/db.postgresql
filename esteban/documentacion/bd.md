@@ -2,7 +2,7 @@
 
 CREATE TABLE public.users
 (
-    id integer NOT NULL,
+    id serial NOT NULL,
     name text NOT NULL,
     lastname text NOT NULL,
     date_created date NOT NULL,

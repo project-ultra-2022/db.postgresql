@@ -65,16 +65,3 @@ CREATE TABLE students_classes (
     FOREIGN KEY (id_school_year) REFERENCES school_years(id)
 );
 
-select * from school_years;
-
-select * from students_classes
-
-select * from classes
-
-select * from degrees
-
-select * from teachers
-
-select * from students
-
-select * from departaments

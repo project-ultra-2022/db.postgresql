@@ -1,76 +1,4 @@
-Script Base
-DROP DATABASE IF EXISTS university;
-CREATE DATABASE university CHARACTER SET utf8mb4;
-USE university;
-
-CREATE TABLE departaments (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE students (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    document VARCHAR(9) UNIQUE,
-    name VARCHAR(25) NOT NULL,
-    lastname1 VARCHAR(50) NOT NULL,
-    lastname2 VARCHAR(50),
-    city VARCHAR(25) NOT NULL,
-    address VARCHAR(50) NOT NULL,
-    cellphone VARCHAR(9),
-    date_born DATE NOT NULL,
-    sexo ENUM('H', 'M') NOT NULL
-);
-
-CREATE TABLE teachers (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    document VARCHAR(9) UNIQUE,
-    name VARCHAR(25) NOT NULL,
-    lastname1 VARCHAR(50) NOT NULL,
-    lastname2 VARCHAR(50),
-    city VARCHAR(25) NOT NULL,
-    address VARCHAR(50) NOT NULL,
-    cellphone VARCHAR(9),
-    date_born DATE NOT NULL,
-    sexo ENUM('H', 'M') NOT NULL,
-    id_departament INT UNSIGNED NOT NULL,
-    FOREIGN KEY (id_departament) REFERENCES departaments(id)
-);
-
-CREATE TABLE degrees (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE classes (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    credits FLOAT UNSIGNED NOT NULL,
-    type ENUM('básica', 'obligatoria', 'optativa') NOT NULL,
-    course TINYINT UNSIGNED NOT NULL,
-    semester TINYINT UNSIGNED NOT NULL,
-    id_teacher INT UNSIGNED,
-    id_grado INT UNSIGNED NOT NULL,
-    FOREIGN KEY(id_teacher) REFERENCES teachers(id),
-    FOREIGN KEY(id_grado) REFERENCES degrees(id)
-);
-
-CREATE TABLE school_years (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    start_year YEAR NOT NULL,
-    end_year YEAR NOT NULL
-);
-
-CREATE TABLE students_classes (
-    id_student INT UNSIGNED NOT NULL,
-    id_class INT UNSIGNED NOT NULL,
-    id_school_year INT UNSIGNED NOT NULL,
-    PRIMARY KEY (id_student, id_class, id_school_year),
-    FOREIGN KEY (id_student) REFERENCES students(id),
-    FOREIGN KEY (id_class) REFERENCES classes(id),
-    FOREIGN KEY (id_school_year) REFERENCES school_years(id)
-);
-
- /* departaments */
+/* departaments */
 INSERT INTO departaments VALUES (1, 'Informática');
 INSERT INTO departaments VALUES (2, 'Matemáticas');
 INSERT INTO departaments VALUES (3, 'Economía y Empresa');
@@ -81,7 +9,7 @@ INSERT INTO departaments VALUES (7, 'Filología');
 INSERT INTO departaments VALUES (8, 'Derecho');
 INSERT INTO departaments VALUES (9, 'Biología y Geología');
 
- /* Students */
+/* Students */
 INSERT INTO students VALUES (1, '89542419S', 'Juan', 'Saez', 'Vega', 'Almería', 'C/ Mercurio', '618253876', '1992/08/08', 'H');
 INSERT INTO students VALUES (2, '26902806M', 'Salvador', 'Sánchez', 'Pérez', 'Almería', 'C/ Real del barrio alto', '950254837', '1991/03/28', 'H');
 INSERT INTO students VALUES (4, '17105885A', 'Pedro', 'Heller', 'Pagac', 'Almería', 'C/ Estrella fugaz', NULL, '2000/10/05', 'H');
@@ -252,3 +180,25 @@ INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 7
 INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 8, 2);
 INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 9, 2);
 INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 10, 2);
+
+/* Points */
+INSERT INTO notes(points, id_student)
+VALUES
+(2,1),
+(1,1),
+(3,2),
+(5,4),
+(3,4),
+(2,6),
+(3,7),
+(2,7),
+(3,7),
+(2,9),
+(3,9),
+(2,11),
+(3,11),
+(21,19),
+(3,19),
+(22,22),
+(32,22),
+(2,24);

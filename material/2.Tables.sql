@@ -65,3 +65,15 @@ CREATE TABLE students_classes (
     FOREIGN KEY (id_school_year) REFERENCES school_years(id)
 );
 
+CREATE TABLE notes
+(
+    id serial NOT NULL,
+    points integer NOT NULL,
+    id_student integer NOT NULL,
+    CONSTRAINT id PRIMARY KEY (id),
+    CONSTRAINT id_student FOREIGN KEY (id_student)
+        REFERENCES students (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+);

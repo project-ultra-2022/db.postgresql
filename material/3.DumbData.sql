@@ -1,76 +1,4 @@
-Script Base
-DROP DATABASE IF EXISTS university;
-CREATE DATABASE university CHARACTER SET utf8mb4;
-USE university;
-
-CREATE TABLE departaments (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE students (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    document VARCHAR(9) UNIQUE,
-    name VARCHAR(25) NOT NULL,
-    lastname1 VARCHAR(50) NOT NULL,
-    lastname2 VARCHAR(50),
-    city VARCHAR(25) NOT NULL,
-    address VARCHAR(50) NOT NULL,
-    cellphone VARCHAR(9),
-    date_born DATE NOT NULL,
-    sexo ENUM('H', 'M') NOT NULL
-);
-
-CREATE TABLE teachers (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    document VARCHAR(9) UNIQUE,
-    name VARCHAR(25) NOT NULL,
-    lastname1 VARCHAR(50) NOT NULL,
-    lastname2 VARCHAR(50),
-    city VARCHAR(25) NOT NULL,
-    address VARCHAR(50) NOT NULL,
-    cellphone VARCHAR(9),
-    date_born DATE NOT NULL,
-    sexo ENUM('H', 'M') NOT NULL,
-    id_departament INT UNSIGNED NOT NULL,
-    FOREIGN KEY (id_departament) REFERENCES departaments(id)
-);
-
-CREATE TABLE degrees (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE classes (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    credits FLOAT UNSIGNED NOT NULL,
-    type ENUM('básica', 'obligatoria', 'optativa') NOT NULL,
-    course TINYINT UNSIGNED NOT NULL,
-    semester TINYINT UNSIGNED NOT NULL,
-    id_teacher INT UNSIGNED,
-    id_grado INT UNSIGNED NOT NULL,
-    FOREIGN KEY(id_teacher) REFERENCES teachers(id),
-    FOREIGN KEY(id_grado) REFERENCES degrees(id)
-);
-
-CREATE TABLE school_years (
-    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    start_year YEAR NOT NULL,
-    end_year YEAR NOT NULL
-);
-
-CREATE TABLE students_classes (
-    id_student INT UNSIGNED NOT NULL,
-    id_class INT UNSIGNED NOT NULL,
-    id_school_year INT UNSIGNED NOT NULL,
-    PRIMARY KEY (id_student, id_class, id_school_year),
-    FOREIGN KEY (id_student) REFERENCES students(id),
-    FOREIGN KEY (id_class) REFERENCES classes(id),
-    FOREIGN KEY (id_school_year) REFERENCES school_years(id)
-);
-
- /* departaments */
+/* departaments */
 INSERT INTO departaments VALUES (1, 'Informática');
 INSERT INTO departaments VALUES (2, 'Matemáticas');
 INSERT INTO departaments VALUES (3, 'Economía y Empresa');
@@ -81,7 +9,7 @@ INSERT INTO departaments VALUES (7, 'Filología');
 INSERT INTO departaments VALUES (8, 'Derecho');
 INSERT INTO departaments VALUES (9, 'Biología y Geología');
 
- /* Students */
+/* Students */
 INSERT INTO students VALUES (1, '89542419S', 'Juan', 'Saez', 'Vega', 'Almería', 'C/ Mercurio', '618253876', '1992/08/08', 'H');
 INSERT INTO students VALUES (2, '26902806M', 'Salvador', 'Sánchez', 'Pérez', 'Almería', 'C/ Real del barrio alto', '950254837', '1991/03/28', 'H');
 INSERT INTO students VALUES (4, '17105885A', 'Pedro', 'Heller', 'Pagac', 'Almería', 'C/ Estrella fugaz', NULL, '2000/10/05', 'H');
@@ -126,16 +54,16 @@ INSERT INTO degrees VALUES (9, 'Grado en Matemáticas (Plan 2010)');
 INSERT INTO degrees VALUES (10, 'Grado en Química (Plan 2009)');
 
 /* classes */
-INSERT INTO classes VALUES (1, 'Álgegra lineal y matemática discreta', 6, 'básica', 1, 1, NULL, 4);
-INSERT INTO classes VALUES (2, 'Cálculo', 6, 'básica', 1, 1, NULL, 4);
-INSERT INTO classes VALUES (3, 'Física para informática', 6, 'básica', 1, 1, NULL, 4);
-INSERT INTO classes VALUES (4, 'Introducción a la programación', 6, 'básica', 1, 1, NULL, 4);
-INSERT INTO classes VALUES (5, 'Organización y gestión de empresas', 6, 'básica', 1, 1, NULL, 4);
-INSERT INTO classes VALUES (6, 'Estadística', 6, 'básica', 1, 2, NULL, 4);
-INSERT INTO classes VALUES (7, 'Estructura y tecnología de computadores', 6, 'básica', 1, 2, NULL, 4);
-INSERT INTO classes VALUES (8, 'Fundamentos de electrónica', 6, 'básica', 1, 2, NULL, 4);
-INSERT INTO classes VALUES (9, 'Lógica y algorítmica', 6, 'básica', 1, 2, NULL, 4);
-INSERT INTO classes VALUES (10, 'Metodología de la programación', 6, 'básica', 1, 2, NULL, 4);
+INSERT INTO classes VALUES (1, 'Álgegra lineal y matemática discreta', 6, 'básica', 1, 1, 3, 4);
+INSERT INTO classes VALUES (2, 'Cálculo', 6, 'básica', 1, 1, 5, 4);
+INSERT INTO classes VALUES (3, 'Física para informática', 6, 'básica', 1, 1, 8, 4);
+INSERT INTO classes VALUES (4, 'Introducción a la programación', 6, 'básica', 1, 1, 10, 4);
+INSERT INTO classes VALUES (5, 'Organización y gestión de empresas', 6, 'básica', 1, 1, 12, 4);
+INSERT INTO classes VALUES (6, 'Estadística', 6, 'básica', 1, 2, 13, 4);
+INSERT INTO classes VALUES (7, 'Estructura y tecnología de computadores', 6, 'básica', 1, 2, 14, 4);
+INSERT INTO classes VALUES (8, 'Fundamentos de electrónica', 6, 'básica', 1, 2, 15, 4);
+INSERT INTO classes VALUES (9, 'Lógica y algorítmica', 6, 'básica', 1, 2, 16, 4);
+INSERT INTO classes VALUES (10, 'Metodología de la programación', 6, 'básica', 1, 2, 17, 4);
 INSERT INTO classes VALUES (11, 'Arquitectura de Computadores', 6, 'básica', 2, 1, 3, 4);
 INSERT INTO classes VALUES (12, 'Estructura de Datos y Algoritmos I', 6, 'obligatoria', 2, 1, 3, 4);
 INSERT INTO classes VALUES (13, 'Ingeniería del Software', 6, 'obligatoria', 2, 1, 14, 4);
@@ -147,68 +75,68 @@ INSERT INTO classes VALUES (18, 'Fundamentos de Redes de Computadores', 6 ,'obli
 INSERT INTO classes VALUES (19, 'Pladocumenticación y Gestión de Proyectos Informáticos', 6, 'obligatoria', 2, 2, 3, 4);
 INSERT INTO classes VALUES (20, 'Programación de Servicios Software', 6, 'obligatoria', 2, 2, 14, 4);
 INSERT INTO classes VALUES (21, 'Desarrollo de interfaces de usuario', 6, 'obligatoria', 3, 1, 14, 4);
-INSERT INTO classes VALUES (22, 'Ingeniería de Requisitos', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (23, 'Integración de las Tecnologías de la Información en las Organizaciones', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (24, 'Modelado y Diseño del Software 1', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (25, 'Multiprocesadores', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (26, 'Seguridad y cumplimiento normativo', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (27, 'Sistema de Información para las Organizaciones', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (28, 'Tecnologías web', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (29, 'Teoría de códigos y criptografía', 6, 'optativa', 3, 1, NULL, 4);
-INSERT INTO classes VALUES (30, 'Administración de bases de datos', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (31, 'Herramientas y Métodos de Ingeniería del Software', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (32, 'Informática industrial y robótica', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (33, 'Ingeniería de Sistemas de Información', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (34, 'Modelado y Diseño del Software 2', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (35, 'Negocio Electrónico', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (36, 'Periféricos e interfaces', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (37, 'Sistemas de tiempo real', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (38, 'Tecnologías de acceso a red', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (39, 'Tratamiento digital de imágenes', 6, 'optativa', 3, 2, NULL, 4);
-INSERT INTO classes VALUES (40, 'Administración de redes y sistemas operativos', 6, 'optativa', 4, 1, NULL, 4);
-INSERT INTO classes VALUES (41, 'Almacenes de Datos', 6, 'optativa', 4, 1, NULL, 4);
-INSERT INTO classes VALUES (42, 'Fiabilidad y Gestión de Riesgos', 6, 'optativa', 4, 1, NULL, 4);
-INSERT INTO classes VALUES (43, 'Líneas de Productos Software', 6, 'optativa', 4, 1, NULL, 4);
-INSERT INTO classes VALUES (44, 'Procesos de Ingeniería del Software 1', 6, 'optativa', 4, 1, NULL, 4);
-INSERT INTO classes VALUES (45, 'Tecnologías multimedia', 6, 'optativa', 4, 1, NULL, 4);
-INSERT INTO classes VALUES (46, 'Análisis y pladocumenticación de las TI', 6, 'optativa', 4, 2, NULL, 4);
-INSERT INTO classes VALUES (47, 'Desarrollo Rápido de Aplicaciones', 6, 'optativa', 4, 2, NULL, 4);
-INSERT INTO classes VALUES (48, 'Gestión de la Calidad y de la Innovación Tecnológica', 6, 'optativa', 4, 2, NULL, 4);
-INSERT INTO classes VALUES (49, 'Inteligencia del Negocio', 6, 'optativa', 4, 2, NULL, 4);
-INSERT INTO classes VALUES (50, 'Procesos de Ingeniería del Software 2', 6, 'optativa', 4, 2, NULL, 4);
-INSERT INTO classes VALUES (51, 'Seguridad Informática', 6, 'optativa', 4, 2, NULL, 4);
-INSERT INTO classes VALUES (52, 'Biologia celular', 6, 'básica', 1, 1, NULL, 7);
-INSERT INTO classes VALUES (53, 'Física', 6, 'básica', 1, 1, NULL, 7);
-INSERT INTO classes VALUES (54, 'Matemáticas I', 6, 'básica', 1, 1, NULL, 7);
-INSERT INTO classes VALUES (55, 'Química general', 6, 'básica', 1, 1, NULL, 7);
-INSERT INTO classes VALUES (56, 'Química orgánica', 6, 'básica', 1, 1, NULL, 7);
-INSERT INTO classes VALUES (57, 'Biología vegetal y animal', 6, 'básica', 1, 2, NULL, 7);
-INSERT INTO classes VALUES (58, 'Bioquímica', 6, 'básica', 1, 2, NULL, 7);
-INSERT INTO classes VALUES (59, 'Genética', 6, 'básica', 1, 2, NULL, 7);
-INSERT INTO classes VALUES (60, 'Matemáticas II', 6, 'básica', 1, 2, NULL, 7);
-INSERT INTO classes VALUES (61, 'Microbiología', 6, 'básica', 1, 2, NULL, 7);
-INSERT INTO classes VALUES (62, 'Botánica agrícola', 6, 'obligatoria', 2, 1, NULL, 7);
-INSERT INTO classes VALUES (63, 'Fisiología vegetal', 6, 'obligatoria', 2, 1, NULL, 7);
-INSERT INTO classes VALUES (64, 'Genética molecular', 6, 'obligatoria', 2, 1, NULL, 7);
-INSERT INTO classes VALUES (65, 'Ingeniería bioquímica', 6, 'obligatoria', 2, 1, NULL, 7);
-INSERT INTO classes VALUES (66, 'Termodinámica y cinética química aplicada', 6, 'obligatoria', 2, 1, NULL, 7);
-INSERT INTO classes VALUES (67, 'Biorreactores', 6, 'obligatoria', 2, 2, NULL, 7);
-INSERT INTO classes VALUES (68, 'Biotecnología microbiana', 6, 'obligatoria', 2, 2, NULL, 7);
-INSERT INTO classes VALUES (69, 'Ingeniería genética', 6, 'obligatoria', 2, 2, NULL, 7);
-INSERT INTO classes VALUES (70, 'Inmunología', 6, 'obligatoria', 2, 2, NULL, 7);
-INSERT INTO classes VALUES (71, 'Virología', 6, 'obligatoria', 2, 2, NULL, 7);
-INSERT INTO classes VALUES (72, 'Bases moleculares del desarrollo vegetal', 4.5, 'obligatoria', 3, 1, NULL, 7);
-INSERT INTO classes VALUES (73, 'Fisiología animal', 4.5, 'obligatoria', 3, 1, NULL, 7);
-INSERT INTO classes VALUES (74, 'Metabolismo y biosíntesis de biomoléculas', 6, 'obligatoria', 3, 1, NULL, 7);
-INSERT INTO classes VALUES (75, 'Operaciones de separación', 6, 'obligatoria', 3, 1, NULL, 7);
-INSERT INTO classes VALUES (76, 'Patología molecular de plantas', 4.5, 'obligatoria', 3, 1, NULL, 7);
-INSERT INTO classes VALUES (77, 'Técnicas instrumentales básicas', 4.5, 'obligatoria', 3, 1, NULL, 7);
-INSERT INTO classes VALUES (78, 'Bioinformática', 4.5, 'obligatoria', 3, 2, NULL, 7);
-INSERT INTO classes VALUES (79, 'Biotecnología de los productos hortofrutículas', 4.5, 'obligatoria', 3, 2, NULL, 7);
-INSERT INTO classes VALUES (80, 'Biotecnología vegetal', 6, 'obligatoria', 3, 2, NULL, 7);
-INSERT INTO classes VALUES (81, 'Genómica y proteómica', 4.5, 'obligatoria', 3, 2, NULL, 7);
-INSERT INTO classes VALUES (82, 'Procesos biotecnológicos', 6, 'obligatoria', 3, 2, NULL, 7);
-INSERT INTO classes VALUES (83, 'Técnicas instrumentales avanzadas', 4.5, 'obligatoria', 3, 2, NULL, 7);
+INSERT INTO classes VALUES (22, 'Ingeniería de Requisitos', 6, 'optativa', 3, 1, 3, 4);
+INSERT INTO classes VALUES (23, 'Integración de las Tecnologías de la Información en las Organizaciones', 6, 'optativa', 3, 1, 5, 4);
+INSERT INTO classes VALUES (24, 'Modelado y Diseño del Software 1', 6, 'optativa', 3, 1, 8, 4);
+INSERT INTO classes VALUES (25, 'Multiprocesadores', 6, 'optativa', 3, 1, 10, 4);
+INSERT INTO classes VALUES (26, 'Seguridad y cumplimiento normativo', 6, 'optativa', 3, 1, 12, 4);
+INSERT INTO classes VALUES (27, 'Sistema de Información para las Organizaciones', 6, 'optativa', 3, 1, 13, 4);
+INSERT INTO classes VALUES (28, 'Tecnologías web', 6, 'optativa', 3, 1, 14, 4);
+INSERT INTO classes VALUES (29, 'Teoría de códigos y criptografía', 6, 'optativa', 3, 1, 15, 4);
+INSERT INTO classes VALUES (30, 'Administración de bases de datos', 6, 'optativa', 3, 2, 16, 4);
+INSERT INTO classes VALUES (31, 'Herramientas y Métodos de Ingeniería del Software', 6, 'optativa', 3, 2, 17, 4);
+INSERT INTO classes VALUES (32, 'Informática industrial y robótica', 6, 'optativa', 3, 2, 18, 4);
+INSERT INTO classes VALUES (33, 'Ingeniería de Sistemas de Información', 6, 'optativa', 3, 2, 20, 4);
+INSERT INTO classes VALUES (34, 'Modelado y Diseño del Software 2', 6, 'optativa', 3, 2, 21, 4);
+INSERT INTO classes VALUES (35, 'Negocio Electrónico', 6, 'optativa', 3, 2, 22, 4);
+INSERT INTO classes VALUES (36, 'Periféricos e interfaces', 6, 'optativa', 3, 2, 23, 4);
+INSERT INTO classes VALUES (37, 'Sistemas de tiempo real', 6, 'optativa', 3, 2, 3, 4);
+INSERT INTO classes VALUES (38, 'Tecnologías de acceso a red', 6, 'optativa', 3, 2, 5, 4);
+INSERT INTO classes VALUES (39, 'Tratamiento digital de imágenes', 6, 'optativa', 3, 2, 8, 4);
+INSERT INTO classes VALUES (40, 'Administración de redes y sistemas operativos', 6, 'optativa', 4, 1, 10, 4);
+INSERT INTO classes VALUES (41, 'Almacenes de Datos', 6, 'optativa', 4, 1, 12, 4);
+INSERT INTO classes VALUES (42, 'Fiabilidad y Gestión de Riesgos', 6, 'optativa', 4, 1, 13, 4);
+INSERT INTO classes VALUES (43, 'Líneas de Productos Software', 6, 'optativa', 4, 1, 14, 4);
+INSERT INTO classes VALUES (44, 'Procesos de Ingeniería del Software 1', 6, 'optativa', 4, 1, 15, 4);
+INSERT INTO classes VALUES (45, 'Tecnologías multimedia', 6, 'optativa', 4, 1, 16, 4);
+INSERT INTO classes VALUES (46, 'Análisis y pladocumenticación de las TI', 6, 'optativa', 4, 2, 17, 4);
+INSERT INTO classes VALUES (47, 'Desarrollo Rápido de Aplicaciones', 6, 'optativa', 4, 2, 18, 4);
+INSERT INTO classes VALUES (48, 'Gestión de la Calidad y de la Innovación Tecnológica', 6, 'optativa', 4, 2, 20, 4);
+INSERT INTO classes VALUES (49, 'Inteligencia del Negocio', 6, 'optativa', 4, 2, 21, 4);
+INSERT INTO classes VALUES (50, 'Procesos de Ingeniería del Software 2', 6, 'optativa', 4, 2, 22, 4);
+INSERT INTO classes VALUES (51, 'Seguridad Informática', 6, 'optativa', 4, 2, 23, 4);
+INSERT INTO classes VALUES (52, 'Biologia celular', 6, 'básica', 1, 1, 3, 7);
+INSERT INTO classes VALUES (53, 'Física', 6, 'básica', 1, 1, 5, 7);
+INSERT INTO classes VALUES (54, 'Matemáticas I', 6, 'básica', 1, 1, 8, 7);
+INSERT INTO classes VALUES (55, 'Química general', 6, 'básica', 1, 1, 10, 7);
+INSERT INTO classes VALUES (56, 'Química orgánica', 6, 'básica', 1, 1, 12, 7);
+INSERT INTO classes VALUES (57, 'Biología vegetal y animal', 6, 'básica', 1, 2, 13, 7);
+INSERT INTO classes VALUES (58, 'Bioquímica', 6, 'básica', 1, 2, 14, 7);
+INSERT INTO classes VALUES (59, 'Genética', 6, 'básica', 1, 2, 15, 7);
+INSERT INTO classes VALUES (60, 'Matemáticas II', 6, 'básica', 1, 2, 16, 7);
+INSERT INTO classes VALUES (61, 'Microbiología', 6, 'básica', 1, 2, 17, 7);
+INSERT INTO classes VALUES (62, 'Botánica agrícola', 6, 'obligatoria', 2, 1, 18, 7);
+INSERT INTO classes VALUES (63, 'Fisiología vegetal', 6, 'obligatoria', 2, 1, 20, 7);
+INSERT INTO classes VALUES (64, 'Genética molecular', 6, 'obligatoria', 2, 1, 21, 7);
+INSERT INTO classes VALUES (65, 'Ingeniería bioquímica', 6, 'obligatoria', 2, 1, 22, 7);
+INSERT INTO classes VALUES (66, 'Termodinámica y cinética química aplicada', 6, 'obligatoria', 2, 1, 23, 7);
+INSERT INTO classes VALUES (67, 'Biorreactores', 6, 'obligatoria', 2, 2, 3, 7);
+INSERT INTO classes VALUES (68, 'Biotecnología microbiana', 6, 'obligatoria', 2, 2, 5, 7);
+INSERT INTO classes VALUES (69, 'Ingeniería genética', 6, 'obligatoria', 2, 2, 8, 7);
+INSERT INTO classes VALUES (70, 'Inmunología', 6, 'obligatoria', 2, 2, 10, 7);
+INSERT INTO classes VALUES (71, 'Virología', 6, 'obligatoria', 2, 2, 12, 7);
+INSERT INTO classes VALUES (72, 'Bases moleculares del desarrollo vegetal', 4.5, 'obligatoria', 3, 1, 13, 7);
+INSERT INTO classes VALUES (73, 'Fisiología animal', 4.5, 'obligatoria', 3, 1, 14, 7);
+INSERT INTO classes VALUES (74, 'Metabolismo y biosíntesis de biomoléculas', 6, 'obligatoria', 3, 1, 15, 7);
+INSERT INTO classes VALUES (75, 'Operaciones de separación', 6, 'obligatoria', 3, 1, 16, 7);
+INSERT INTO classes VALUES (76, 'Patología molecular de plantas', 4.5, 'obligatoria', 3, 1, 17, 7);
+INSERT INTO classes VALUES (77, 'Técnicas instrumentales básicas', 4.5, 'obligatoria', 3, 1, 18, 7);
+INSERT INTO classes VALUES (78, 'Bioinformática', 4.5, 'obligatoria', 3, 2, 20, 7);
+INSERT INTO classes VALUES (79, 'Biotecnología de los productos hortofrutículas', 4.5, 'obligatoria', 3, 2, 21, 7);
+INSERT INTO classes VALUES (80, 'Biotecnología vegetal', 6, 'obligatoria', 3, 2, 22, 7);
+INSERT INTO classes VALUES (81, 'Genómica y proteómica', 4.5, 'obligatoria', 3, 2, 23, 7);
+INSERT INTO classes VALUES (82, 'Procesos biotecnológicos', 6, 'obligatoria', 3, 2, 22, 7);
+INSERT INTO classes VALUES (83, 'Técnicas instrumentales avanzadas', 4.5, 'obligatoria', 3, 2, 23, 7);
 
 /* course escolar */
 INSERT INTO school_years VALUES (1, '2014-01-01', '2015-01-01');
@@ -252,3 +180,25 @@ INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 7
 INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 8, 2);
 INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 9, 2);
 INSERT INTO students_classes (id_student, id_class, id_school_year) VALUES (4, 10, 2);
+
+/* Points */
+INSERT INTO notes(points, id_student)
+VALUES
+(2,1),
+(1,1),
+(3,2),
+(5,4),
+(3,4),
+(2,6),
+(3,7),
+(2,7),
+(3,7),
+(2,9),
+(3,9),
+(2,11),
+(3,11),
+(21,19),
+(3,19),
+(22,22),
+(32,22),
+(2,24);

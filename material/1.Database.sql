@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS university;
+CREATE DATABASE university CHARACTER SET utf8mb4;
+USE university;

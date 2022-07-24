@@ -1,6 +1,6 @@
 # PostgreSQL
 
-Para interactuar con las bases de datos se puede trabajar tanto desde la Query Tool, como desde la interfaz gráfica.df
+Para interactuar con las bases de datos se puede trabajar tanto desde la Query Tool, como desde la interfaz gráfica.
 
 # Query Tool
 

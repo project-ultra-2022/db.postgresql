@@ -38,7 +38,3 @@ FROM students_classes AS sc
     INNER JOIN students AS s ON sc.id_student = s.id
 
     GROUP BY (s.name ||' '|| s.lastname1 ||' '|| s.lastname2)
-
-/*
-Nota 8/10 -> Super bien pero lo entrego tarde
-*/

@@ -4,3 +4,8 @@ select (s.name || ' ' || s.lastname1) as fullname,
 from students_classes as sc
 inner join students as s on sc.id_student = s.id
 group by (s.name || ' ' || s.lastname1)
+
+/*
+Nota 8/10
+Retroalimentación: No la entregaste a tiempo
+*/

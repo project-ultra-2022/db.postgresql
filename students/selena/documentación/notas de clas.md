@@ -123,3 +123,14 @@ select
 # sum= suma, 
 # Count= cuantas veces sale en la lista, registros
 # group by= en que lo agrupa
+SELECT * FROM teachers
+inner join trae los campos completos 
+SELECT 
+    t.id,
+    t.name||' '||lastname1 as completename,
+    t.id_departament,
+    d.*
+
+FROM teachers as t
+inner join departaments as d on t.id_departament = d.id
+

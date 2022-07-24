@@ -42,3 +42,21 @@ Condiciones: No traer los registros donde la clase no tenga estudiantes inscrito
     5. Si la sumatoria de puntos es inferior a 3, mostrar 'No pasa el año', si es mayor a 3, mostrar 'Si pasa el año'
     
 Condiciones: No traer los registros donde el estudiante no tengas notas asignadas
+select * from students
+select * from notes
+
+select 
+    (s.name||' '||s.lastname1) as fullname,
+        case 
+            when s.sexo = 'M' then 'Estudiante genero femenino'
+            when s.sexo =  'H' then 'Estudiante genero masculino'
+        end genero,
+        
+        case 
+            when sum (n.points) <= 2 then 'No pasa el año'
+            when sum (n.points) >= 3 then 'Si pasa el año'
+        end puntos,
+        s.document, sum (n.points)
+from students as s
+inner join notes as n on n.id_student = s.id
+group by (s.name||' '||s.lastname1), s.sexo, s.document

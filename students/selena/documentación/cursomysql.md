@@ -280,3 +280,9 @@ select distinct proveedor from productos;
 ## index // mas de un campo, permite null o numeros. 
 ## unique // el valor debe ser unico ejemplo en correos o telefono
 
+# subconsultas
+una subconsulta es una instrucción select anidada dentro de otra instrucción select, select into, delte o update, incluso dentro de otra subconsulta. 
+## tipos de subconsultas
+1. las que retornan un solo valor y se utilizan con un solo valor de comparación o en lugar de una expresión 
+2. las que retornan una lista de valores y se combinan con 'in', o los operadores 'any','some' y 'all'
+3. los que testean la existencia con 'exists'
